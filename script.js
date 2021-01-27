@@ -1,61 +1,49 @@
 // iPhone Plus Button Event Handler
 const iphonePlusBtn = document.getElementById("iphone-plus-btn");
 iphonePlusBtn.addEventListener("click", function () {
-    sumValue()
-    priceIncrease()
+    QuantityUpdate("iphone-quantity", 1);
+    PriceUpdate("iphone-quantity", "iphone-price", 1219, 1219);
 })
 
 // iPhone Minus Button Event Handler
 const iphoneMinusBtn = document.getElementById("iphone-minus-btn");
 iphoneMinusBtn.addEventListener("click", function () {
-    deductValue()
-    priceIncrease()
+    QuantityUpdate("iphone-quantity", -1);
+    PriceUpdate("iphone-quantity", "iphone-price", 1219, -1219);
 })
 
-function sumValue() {
-    const currentValue = document.getElementById("iphone-value").value;
-    const valueNumber = parseFloat(currentValue);
-    const plusValue = valueNumber + 1;
-    document.getElementById("iphone-value").value = plusValue;
-}
-
-function deductValue() {
-    const currentValue = document.getElementById("iphone-value").value;
-    const valueNumber = parseFloat(currentValue);
-    const minusValue = valueNumber - 1;
-    document.getElementById("iphone-value").value = minusValue;
-}
-
-function priceIncrease() {
-    const currentPrice = document.getElementById("iphone-price").innerText;
-    const priceNumber = parseFloat(currentPrice);
-    const totalPrice = priceNumber + 1219;
-    document.getElementById("iphone-price").innerText = totalPrice;
-}
-
-
-/* // iPhone Case Plus Button Event Handler
+// iPhone Case Plus Button Event Handler
 const casePlusBtn = document.getElementById("case-plus-btn");
 casePlusBtn.addEventListener("click", function () {
-    sumValue()
+    QuantityUpdate("case-quantity", 1);
+    PriceUpdate("case-quantity", "case-price", 59, 59);
 })
 
 // iPhone Case Minus Button Event Handler
 const caseMinusBtn = document.getElementById("case-minus-btn");
 caseMinusBtn.addEventListener("click", function () {
-    deductValue()
+    QuantityUpdate("case-quantity", -1);
+    PriceUpdate("case-quantity", "case-price", 59, -59);
 })
 
-function sumValue() {
-    const currentValue = document.getElementById("case-value").value;
-    const valueNumber = parseFloat(currentValue);
-    const plusValue = valueNumber + 1;
-    document.getElementById("case-value").value = plusValue;
+// Function For Iphone Quantity Update
+function QuantityUpdate(quantityId, added) {
+    const currentQuantity = parseFloat(document.getElementById(quantityId).value);
+    const updateQuantity = currentQuantity + added;
+    document.getElementById(quantityId).value = updateQuantity;
 }
 
-function deductValue() {
-    const currentValue = document.getElementById("case-value").value;
-    const valueNumber = parseFloat(currentValue);
-    const minusValue = valueNumber - 1;
-    document.getElementById("case-value").value = minusValue;
-} */
+// Function For Iphone Price Update
+function PriceUpdate(quantityId, priceId, priceOne, priceTow) {
+    const currentQuantity = parseFloat(document.getElementById(quantityId).value);
+    const updatePrice = currentQuantity * priceOne;
+    document.getElementById(priceId).innerText = updatePrice;
+
+    const currentSubtotal = parseFloat(document.getElementById("subtotal").innerText);
+    const updateSubtotal = currentSubtotal + priceTow;
+    document.getElementById("subtotal").innerText = updateSubtotal;
+
+    const total = parseFloat(document.getElementById("total").innerText);
+    const updateTotal = total + priceTow;
+    document.getElementById("total").innerText = updateTotal;
+}
