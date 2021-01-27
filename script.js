@@ -26,14 +26,14 @@ caseMinusBtn.addEventListener("click", function () {
     PriceUpdate("case-quantity", "case-price", 59, -59);
 })
 
-// Function For Iphone Quantity Update
+// Function For Quantity Update
 function QuantityUpdate(quantityId, added) {
     const currentQuantity = parseFloat(document.getElementById(quantityId).value);
     const updateQuantity = currentQuantity + added;
     document.getElementById(quantityId).value = updateQuantity;
 }
 
-// Function For Iphone Price Update
+// Function For Price Update
 function PriceUpdate(quantityId, priceId, priceOne, priceTow) {
     const currentQuantity = parseFloat(document.getElementById(quantityId).value);
     const updatePrice = currentQuantity * priceOne;
@@ -46,4 +46,8 @@ function PriceUpdate(quantityId, priceId, priceOne, priceTow) {
     const total = parseFloat(document.getElementById("total").innerText);
     const updateTotal = total + priceTow;
     document.getElementById("total").innerText = updateTotal;
+
+    if (quantityId < 0) {
+        
+    }
 }
