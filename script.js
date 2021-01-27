@@ -2,15 +2,17 @@
 const iphonePlusBtn = document.getElementById("iphone-plus-btn");
 iphonePlusBtn.addEventListener("click", function () {
     sumValue()
+    priceIncrease()
 })
 
 // iPhone Minus Button Event Handler
 const iphoneMinusBtn = document.getElementById("iphone-minus-btn");
 iphoneMinusBtn.addEventListener("click", function () {
     deductValue()
+    priceIncrease()
 })
 
-function sumValue(isSum) {
+function sumValue() {
     const currentValue = document.getElementById("iphone-value").value;
     const valueNumber = parseFloat(currentValue);
     const plusValue = valueNumber + 1;
@@ -23,6 +25,14 @@ function deductValue() {
     const minusValue = valueNumber - 1;
     document.getElementById("iphone-value").value = minusValue;
 }
+
+function priceIncrease() {
+    const currentPrice = document.getElementById("iphone-price").innerText;
+    const priceNumber = parseFloat(currentPrice);
+    const totalPrice = priceNumber + 1219;
+    document.getElementById("iphone-price").innerText = totalPrice;
+}
+
 
 /* // iPhone Case Plus Button Event Handler
 const casePlusBtn = document.getElementById("case-plus-btn");
