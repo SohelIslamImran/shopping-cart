@@ -22,13 +22,10 @@ function productUpdate(product, isIncrease) {
 function calculateTotal() {
     const phoneQuantity = getInputValue('iphone');
     const caseQuantity = getInputValue('case');
-
     const totalPrice = phoneQuantity * 1219 + caseQuantity * 59;
     document.getElementById('subtotal').innerText = totalPrice;
-
     const tax = Math.round(totalPrice * 0.1);
     document.getElementById('tax').innerText = tax;
-
     const grandTotal = totalPrice + tax;
     document.getElementById('total').innerText = grandTotal;
 }
@@ -45,26 +42,20 @@ function removeItem(item) {
     if (item == 'iphone') {
         const phoneQuantity = getInputValue('iphone');
         const caseQuantity = getInputValue('case');
-    
         const totalPrice = caseQuantity * 59;
         document.getElementById('subtotal').innerText = totalPrice;
-    
         const tax = Math.round(totalPrice * 0.1);
         document.getElementById('tax').innerText = tax;
-    
         const grandTotal = totalPrice + tax;
         document.getElementById('total').innerText = grandTotal;
     }
     else if (item == 'case') {
         const phoneQuantity = getInputValue('iphone');
         const caseQuantity = getInputValue('case');
-    
         const totalPrice = phoneQuantity * 1219;
         document.getElementById('subtotal').innerText = totalPrice;
-    
         const tax = Math.round(totalPrice * 0.1);
         document.getElementById('tax').innerText = tax;
-    
         const grandTotal = totalPrice + tax;
         document.getElementById('total').innerText = grandTotal;
     }
