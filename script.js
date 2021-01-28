@@ -40,7 +40,6 @@ function removeItem(item) {
     const productArea = document.getElementById(item + '-cart');
     productArea.style.display = "none";
     if (item == 'iphone') {
-        const phoneQuantity = getInputValue('iphone');
         const caseQuantity = getInputValue('case');
         const totalPrice = caseQuantity * 59;
         document.getElementById('subtotal').innerText = totalPrice;
@@ -48,16 +47,19 @@ function removeItem(item) {
         document.getElementById('tax').innerText = tax;
         const grandTotal = totalPrice + tax;
         document.getElementById('total').innerText = grandTotal;
+        document.getElementById('iphone-quantity').value = 0;
+        calculateTotal();
     }
     else if (item == 'case') {
         const phoneQuantity = getInputValue('iphone');
-        const caseQuantity = getInputValue('case');
         const totalPrice = phoneQuantity * 1219;
         document.getElementById('subtotal').innerText = totalPrice;
         const tax = Math.round(totalPrice * 0.1);
         document.getElementById('tax').innerText = tax;
         const grandTotal = totalPrice + tax;
         document.getElementById('total').innerText = grandTotal;
+        document.getElementById('case-quantity').value = 0;
+        calculateTotal();
     }
 }
 
