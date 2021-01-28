@@ -1,4 +1,77 @@
-// iPhone Plus Button Event Handler
+function productUpdate(product, isIncrease) {
+    const productQuantity = getInputValue(product);
+    let productNewQuantity = productQuantity;
+    if (isIncrease == true) {
+        productNewQuantity = productQuantity + 1;
+    }
+    if (isIncrease == false && productQuantity > 0) {
+        productNewQuantity = productQuantity - 1;
+    }
+    document.getElementById(product + '-quantity').value = productNewQuantity;
+    let totalProduct = 0;
+    if (product == 'iphone') {
+        totalProduct = productNewQuantity * 1219;
+    }
+    if (product == 'case') {
+        totalProduct = productNewQuantity * 59;
+    }
+    document.getElementById(product + '-price').innerText =  totalProduct;
+    calculateTotal();
+}
+
+function calculateTotal() {
+    const phoneQuantity = getInputValue('iphone');
+    const caseQuantity = getInputValue('case');
+
+    const totalPrice = phoneQuantity * 1219 + caseQuantity * 59;
+    document.getElementById('subtotal').innerText = totalPrice;
+
+    const tax = Math.round(totalPrice * 0.1);
+    document.getElementById('tax').innerText = tax;
+
+    const grandTotal = totalPrice + tax;
+    document.getElementById('total').innerText = grandTotal;
+}
+
+function getInputValue(product) {
+    const productInput = document.getElementById(product + '-quantity');
+    const productQuantity = parseInt(productInput.value);
+    return productQuantity;
+}
+
+function removeItem(item) {
+    const productArea = document.getElementById(item + '-cart');
+    productArea.style.display = "none";
+    if (item == 'iphone') {
+        const phoneQuantity = getInputValue('iphone');
+        const caseQuantity = getInputValue('case');
+    
+        const totalPrice = caseQuantity * 59;
+        document.getElementById('subtotal').innerText = totalPrice;
+    
+        const tax = Math.round(totalPrice * 0.1);
+        document.getElementById('tax').innerText = tax;
+    
+        const grandTotal = totalPrice + tax;
+        document.getElementById('total').innerText = grandTotal;
+    }
+    else if (item == 'case') {
+        const phoneQuantity = getInputValue('iphone');
+        const caseQuantity = getInputValue('case');
+    
+        const totalPrice = phoneQuantity * 1219;
+        document.getElementById('subtotal').innerText = totalPrice;
+    
+        const tax = Math.round(totalPrice * 0.1);
+        document.getElementById('tax').innerText = tax;
+    
+        const grandTotal = totalPrice + tax;
+        document.getElementById('total').innerText = grandTotal;
+    }
+}
+
+
+/* // iPhone Plus Button Event Handler
 const iphonePlusBtn = document.getElementById("iphone-plus-btn");
 iphonePlusBtn.addEventListener("click", function () {
     QuantityUpdate("iphone-quantity", 1);
@@ -46,8 +119,5 @@ function PriceUpdate(quantityId, priceId, priceOne, priceTow) {
     const total = parseFloat(document.getElementById("total").innerText);
     const updateTotal = total + priceTow;
     document.getElementById("total").innerText = updateTotal;
-
-    if (quantityId < 0) {
-        
-    }
 }
+ */
